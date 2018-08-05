@@ -1,0 +1,22 @@
+{
+  "name": "keval",
+  "version": "1.0.0",
+  "description": "Key value store with a similar api to Keyv",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kigiri/keval.git"
+  },
+  "author": "Clement Denis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kigiri/keval/issues"
+  },
+  "homepage": "https://github.com/kigiri/keval#readme",
+  "devDependencies": {
+    "lerna": "^3.0.0-rc.0"
+  }
+}

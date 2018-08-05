@@ -1,6 +1,6 @@
 {
   "name": "gist-keval",
-  "version": "0.0.3",
+  "version": "0.0.2-0",
   "description": "Keval persistance on gist",
   "main": "index.js",
   "scripts": {

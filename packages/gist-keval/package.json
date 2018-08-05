@@ -1,7 +1,7 @@
 {
-  "name": "keval",
+  "name": "gist-keval",
   "version": "0.0.3",
-  "description": "Key value store with a similar api to Keyv",
+  "description": "Keval persistance on gist",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,8 +16,7 @@
     "url": "https://github.com/kigiri/keval/issues"
   },
   "homepage": "https://github.com/kigiri/keval#readme",
-  "devDependencies": {
-    "lerna": "^3.0.0-rc.0"
-  },
-  "gitHead": "9989e0d4995b017cc29d8ed0a7c0bd9705f926ce"
+  "dependencies": {
+    "gh-got": "^7.0.0"
+  }
 }

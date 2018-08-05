@@ -1,6 +1,6 @@
 {
   "name": "keval",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Key value store with a similar api to Keyv",
   "main": "index.js",
   "scripts": {
@@ -18,5 +18,6 @@
   "homepage": "https://github.com/kigiri/keval#readme",
   "devDependencies": {
     "lerna": "^3.0.0-rc.0"
-  }
+  },
+  "gitHead": "9989e0d4995b017cc29d8ed0a7c0bd9705f926ce"
 }

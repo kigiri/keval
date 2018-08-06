@@ -1,5 +1,5 @@
 {
-  "name": "gist-keval",
+  "name": "keval-gist",
   "version": "0.0.2-3",
   "description": "Keval persistance on gist",
   "main": "index.js",

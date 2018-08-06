@@ -1,10 +1,10 @@
 {
-  "name": "gist-keval-generator",
+  "name": "keval-gist-generator",
   "version": "0.0.2-3",
   "description": "Generate a gist token and empty gist for storage",
   "main": "index.js",
   "bin": {
-    "gist-keval-generator": "./gist-keval-generator"
+    "keval-gist-generator": "./keval-gist-generator"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,9 +20,7 @@
   },
   "homepage": "https://github.com/kigiri/keval#readme",
   "dependencies": {
-    "gh-got": "^7.0.0",
-    "password-prompt": "^1.0.7",
-    "prompt-password": "^1.2.0",
+    "got": "^9.0.0",
     "read": "^1.0.7",
     "yargs": "^12.0.1"
   }

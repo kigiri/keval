@@ -1,6 +1,6 @@
 {
   "name": "keval",
-  "version": "0.0.2-0",
+  "version": "0.0.2-1",
   "description": "Key value store with a similar api to Keyv",
   "main": "index.js",
   "scripts": {

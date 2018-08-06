@@ -7,11 +7,11 @@ const path = require('path')
 const { generateCredentials } = require('./index.js')
 
 const readCb = require('read')
-const read = args => new Promise((s,f) => read(args, (e,r) => e ? f(e) : s(r)))
+const read = args => new Promise((s,f) => readCb(args, (e,r) => e ? f(e) : s(r)))
 const prompt = text => read({ prompt: `${text}:` })
 const promptSilent = text => read({ prompt: `${text}:`, silent: true })
 
-const { argv } = require('yargs')
+const { login, password, ...rest } = require('yargs')
   .option('h', {
     alias: 'help',
     description: 'display help message'
@@ -29,18 +29,27 @@ const { argv } = require('yargs')
     description: 'Your github password',
     alias: 'password'
   })
+  .argv
 
 ;(async () => {
-  const crendentials = await generateCredentials({
-    ...argv,
-    login: argv.login || await prompt('Github login'),
-    password: argv.password || await promptSilent('Github password')
+  const credentials = await generateCredentials({
+    ...rest,
+    login: login || await prompt('Github login'),
+    password: password || await promptSilent('Github password')
   })
   const fileBody = JSON.stringify(credentials, null, 2)
   const filePath = path.join(process.cwd(), '.gits-keval-credentials')
   await fs.promises.writeFile(filePath, fileBody)
   console.log(`credentials saved at ${filePath}`)
-}).catch(err => {
-  console.error(err)
+})().catch(err => {
+  if (err.response) {
+    const { message, errors } = err.response.body
+    console.error(`Error: ${message}`)
+    errors.forEach(e =>
+      Object.entries(e).forEach(([ key, value ]) =>
+        console.error(`  ${key}:`, value)))
+  } else {
+    console.error('Error:', err.message)
+  }
   process.exit(1)
 })

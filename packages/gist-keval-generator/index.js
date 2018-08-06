@@ -3,6 +3,8 @@
 const got = require('got')
 
 module.exports.generateCredentials = async ({ login, password, note }) => {
+  if (!login) throw Error('login required')
+  if (!password) throw Error('password required')
   const Authorization = `Basic ${Buffer.from(`${login}:${password}`).toString('base64')}`
   const [ { body: { token } }, { body: { id } } ] = await Promise.all([
     got.post('https://api.github.com/authorizations', {

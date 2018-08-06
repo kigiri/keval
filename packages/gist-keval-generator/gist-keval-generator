@@ -1,0 +1,46 @@
+#!/usr/bin/env node
+
+'use strict'
+
+const fs = require('fs')
+const path = require('path')
+const { generateCredentials } = require('./index.js')
+const saveCredentials = async credentials => {
+  const fileBody = JSON.stringify(credentials, null, 2)
+  const filePath = path.join(process.cwd(), '.gits-keval-credentials')
+  await fs.promises.writeFile(filePath, fileBody)
+  console.log(`credentials saved at ${filePath}`)
+}
+
+const read = require('read')
+const { argv } = require('yargs')
+  .option('h', {
+    alias: 'help',
+    description: 'display help message'
+  })
+  .option('l', {
+    description: 'Your github login',
+    alias: 'login'
+  })
+  .option('n', {
+    description: 'Token note',
+    default: 'gist-keval-generator',
+    alias: 'note'
+  })
+  .option('p', {
+    description: 'Your github password',
+    alias: 'password'
+  })
+  .demand([ 'login' ])
+
+if (!argv.password) {
+  read({ prompt: 'Github password:', silent: true }, (err, password) => {
+    generateCredentials({ ...argv, password })
+      .then(saveCredentials)
+      .catch(err => console.dir(err))
+  })
+} else {
+  generateCredentials(argv)
+    .then(saveCredentials)
+    .catch(err => console.dir(err))
+}
